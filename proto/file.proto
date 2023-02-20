@@ -1,0 +1,25 @@
+syntax = "proto3"; // 定義要使用的 protocol buffer 版本
+ 
+package proto; // for name space
+ 
+option go_package = ".;proto";// generated code 的 full Go import path
+ 
+//定義Service名稱，
+service AddService { 
+  //定義api名稱，傳入參數與回傳值
+  rpc Add(Request) returns (Response);
+  rpc Multiply(Request) returns (Response);
+}
+
+
+//傳入參數的spec
+message Request {
+  int64 a = 1;
+  int64 b = 2;
+}
+
+//回傳值的spec
+message Response {
+  int64 result = 1;
+}
+
